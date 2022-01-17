@@ -1,7 +1,8 @@
-var cityFormEl = document.querySelector("#city-search")
+var cityFormEl = document.querySelector("#city-form")
 var cityInputEl = document.querySelector("#userInput")
-var cityContainerEl = document.querySelector("#current-container")
 var searchHistoryEl = document.querySelector("#search-history")
+var cityContainerEl = document.querySelector("#current-container")
+
 
 // forcast elements
 var forcastDate = document.querySelector(".date")
@@ -18,8 +19,6 @@ var currentWindEl = document.querySelector(".current-wind")
 var currentHumidityEl = document.querySelector(".current-humidity")
 var currentUvEl = document.querySelector(".current-uv")
 
-
-// create array to hold cities for saving
 var cities = []
 
 // after clicking "search", this function is executed
