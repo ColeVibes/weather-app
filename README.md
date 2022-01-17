@@ -9,3 +9,4 @@ this app used a server side weather app to get the forecast of a city a user has
 -Java
 
 # Website URL:
+https://colevibes.github.io/weather-app/
