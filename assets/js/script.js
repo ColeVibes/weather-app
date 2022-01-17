@@ -88,3 +88,41 @@ var getWeather = function (lon, lat) {
             alert("Unable to connect to Open Weather Servers")
         })
 }
+
+var displayCurrentWeather = function (city) {
+
+    var humanDate = convertDate(city.current.dt)
+    var currentDateEl = document.createElement("span")
+    currentDateEl.textContent = " (" + humanDate + ")"
+    currentCityEl.appendChild(currentDateEl)
+
+    var icon = city.current.weather[0].icon
+    var iconUrl = "https://openweathermap.org/img/wn/" + icon + ".png"
+    var iconEl = document.createElement("img")
+    iconEl.setAttribute("src", iconUrl)
+    currentCityEl.appendChild(iconEl)
+
+    var currentTemp = "Temp: " + city.current.temp + " °F"
+    currentTempEl.textContent = currentTemp
+
+    var currentWind = "Wind: " + city.current.wind_speed + " MPH"
+    currentWindEl.textContent = currentWind
+
+    var currentHumidity = "Humidity: " + city.current.humidity + " %"
+    currentHumidityEl.textContent = currentHumidity
+
+    var uvNum = city.current.uvi
+    var currentUV = "UV Index: " + uvNum
+    currentUvEl.textContent = currentUV
+
+    // display green, red or yellow text based on degree of uv index
+    if (uvNum < 2) {
+        currentUvEl.classList.add("text-success")
+    } else if (uvNum > 6) {
+        currentUvEl.classList.add("text-danger")
+    } else {
+        currentUvEl.classList.add("text-warning")
+    }
+
+    display5DayForcast(city)
+}
