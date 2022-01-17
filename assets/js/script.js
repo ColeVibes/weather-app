@@ -1,6 +1,6 @@
 var cityFormEl = document.querySelector("#city-search")
 var cityInputEl = document.querySelector("#city")
-var cityContainerEl = document.querySelector("#current-city-container")
+var cityContainerEl = document.querySelector("#current-container")
 var searchHistoryEl = document.querySelector("#search-history")
 
 // current weather elements
@@ -19,3 +19,19 @@ var forcastHumidity = document.querySelector(".humidity")
 
 // create array to hold cities for saving
 var cities = []
+
+// after clicking "search", this function is executed
+var formSubmitHandler = function (event) {
+    event.preventDefault();
+    // get value from input element
+    var cityName = cityInputEl
+        .value
+        .trim() // removes any spaces
+
+    if (cityName) {
+        getCoord(cityName)
+        cityInputEl.value = "" // removes the city name you just entered
+    } else {
+        alert("Please enter a City.") // alert user if they do not enter a city at all
+    }
+}
