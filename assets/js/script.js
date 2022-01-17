@@ -186,3 +186,17 @@ var loadSearchHistory = function () {
         createButton(cities[i])
     }
 }
+
+// display in left side of page as button 
+var createButton = function (city) {
+    var searchHistoryBtn = document.createElement("button")
+    searchHistoryBtn.classList.add("btn-secondary", "btn", "col-12", "align-items-center", "mt-2")
+    searchHistoryBtn.innerHTML = city
+    document.querySelector("#search-history").appendChild(searchHistoryBtn)
+}
+
+cityFormEl.addEventListener("submit", formSubmitHandler)
+
+searchHistoryEl.addEventListener("click", retriveWeather)
+
+loadSearchHistory()
