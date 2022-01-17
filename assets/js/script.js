@@ -21,13 +21,12 @@ var currentUvEl = document.querySelector(".current-uv")
 
 var cities = []
 
-// after clicking "search", this function is executed
 var formSubmitHandler = function (event) {
     event.preventDefault();
     // get value from input element
     var cityName = cityInputEl
         .value
-        .trim() // removes any spaces
+        .trim()
 
     if (cityName) {
         getCoord(cityName)
@@ -37,12 +36,11 @@ var formSubmitHandler = function (event) {
     }
 }
 
-// gets coordinates of city entered in search bar 
 var getCoord = function (city) {
 
     // format the OpenWeather API URL
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=1b50cbb3b2c102d6f7def4cf1a1ea24d&units=imperial"
-    // console.log(apiUrl)
+
 
     // make a request to the url
     fetch(apiUrl).then(function (response) {
@@ -56,13 +54,13 @@ var getCoord = function (city) {
                 currentCityEl.textContent = currentCity
 
                 if (!cities.includes(currentCity)) {
-                    cities.push(currentCity) // push the currentCity into the cities array
+                    cities.push(currentCity) // push 
                     saveToSearchHistory() // save to local storage
-                    createButton(currentCity) // creates button for city under search history
+                    createButton(currentCity) // creates button 
                 }
             })
         } else {
-            alert("Error: City does no Exist Found. Please check your spelling.")
+            alert("Error: City does not Exist. Please check your spelling.")
         }
     })
         .catch(function (error) {
@@ -70,10 +68,8 @@ var getCoord = function (city) {
         })
 }
 
-// after getting the city coordinates, then we can fetch the "One Call API"
 var getWeather = function (lon, lat) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly&appid=1b50cbb3b2c102d6f7def4cf1a1ea24d&units=imperial"
-    // console.log(apiUrl)
 
     // make a request to the url
     fetch(apiUrl).then(function (response) {
@@ -116,7 +112,6 @@ var displayCurrentWeather = function (city) {
     var currentUV = "UV Index: " + uvNum
     currentUvEl.textContent = currentUV
 
-    // display green, red or yellow text based on degree of uv index
     if (uvNum < 2) {
         currentUvEl.classList.add("text-success")
     } else if (uvNum > 6) {
@@ -134,30 +129,23 @@ var display5DayForcast = function (city) {
 
     for (var i = 1; i < 6; i++) {
 
-        // add css styles to elements created in forcast section 
         document.querySelector("#day" + i).classList.add("forcast")
 
-        // date (run timestamp value in the convertDate function)
         document.querySelector("#day" + i + ">.date").innerHTML = convertDate(city.daily[i].dt)
         document.querySelector("#day" + i + ">.date").classList.add("forcast-date")
 
-        // icon
         var icon = city.daily[i].weather[0].icon
         var iconUrl = "https://openweathermap.org/img/wn/" + icon + ".png"
         document.querySelector("#day" + i + ">.weather-icon").setAttribute("src", iconUrl)
 
-        // temp
         document.querySelector("#day" + i + ">.temp").innerHTML = "Temp: " + city.daily[i].temp.day + " °F"
 
-        // wind
         document.querySelector("#day" + i + ">.wind").innerHTML = "Wind: " + city.daily[i].wind_speed + " MPH"
 
-        // humidity
         document.querySelector("#day" + i + ">.humidity").innerHTML = "Humidity: " + city.daily[i].humidity + " %"
     }
 }
 
-// convert date from unix to human readable format
 var convertDate = function (unixTimeStamp) {
     var milliseconds = unixTimeStamp * 1000
     var date = new Date(milliseconds)
@@ -166,7 +154,6 @@ var convertDate = function (unixTimeStamp) {
 
 // function uses event delegation to find what button was clicked on
 var retriveWeather = function (event) {
-    // console.log(event.target.innerHTML + " was clicked")
     getCoord(event.target.innerHTML)
 }
 
