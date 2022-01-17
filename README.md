@@ -10,3 +10,7 @@ this app used a server side weather app to get the forecast of a city a user has
 
 # Website URL:
 https://colevibes.github.io/weather-app/
+
+# Live Picture
+
+<img src="./assets/image/screenshot.png"></img>
