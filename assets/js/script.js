@@ -156,3 +156,33 @@ var display5DayForcast = function (city) {
     }
 }
 
+// convert date from unix to human readable format
+var convertDate = function (unixTimeStamp) {
+    var milliseconds = unixTimeStamp * 1000
+    var date = new Date(milliseconds)
+    return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear()
+}
+
+// function uses event delegation to find what button was clicked on
+var retriveWeather = function (event) {
+    // console.log(event.target.innerHTML + " was clicked")
+    getCoord(event.target.innerHTML)
+}
+
+var saveToSearchHistory = function () {
+    localStorage.setItem("cities", JSON.stringify(cities)) // saves to local storage
+}
+
+var loadSearchHistory = function () {
+    var savedCities = localStorage.getItem("cities")
+
+    if (savedCities === null) {
+        return false;
+    }
+
+    cities = JSON.parse(savedCities)
+
+    for (var i = 0; i < cities.length; i++) {
+        createButton(cities[i])
+    }
+}
