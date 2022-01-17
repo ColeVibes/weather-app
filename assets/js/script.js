@@ -126,3 +126,32 @@ var displayCurrentWeather = function (city) {
 
     display5DayForcast(city)
 }
+
+var display5DayForcast = function (city) {
+
+    document.querySelector("#title").innerHTML = "5 Day Forcast:"
+
+    for (var i = 1; i < 6; i++) {
+
+        // add css styles to elements created in forcast section 
+        document.querySelector("#day" + i).classList.add("forcast")
+
+        // date (run timestamp value in the convertDate function)
+        document.querySelector("#day" + i + ">.date").innerHTML = convertDate(city.daily[i].dt)
+        document.querySelector("#day" + i + ">.date").classList.add("forcast-date")
+
+        // icon
+        var icon = city.daily[i].weather[0].icon
+        var iconUrl = "https://openweathermap.org/img/wn/" + icon + ".png"
+        document.querySelector("#day" + i + ">.weather-icon").setAttribute("src", iconUrl)
+
+        // temp
+        document.querySelector("#day" + i + ">.temp").innerHTML = "Temp: " + city.daily[i].temp.day + " °F"
+
+        // wind
+        document.querySelector("#day" + i + ">.wind").innerHTML = "Wind: " + city.daily[i].wind_speed + " MPH"
+
+        // humidity
+        document.querySelector("#day" + i + ">.humidity").innerHTML = "Humidity: " + city.daily[i].humidity + " %"
+    }
+}
