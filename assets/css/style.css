@@ -2,27 +2,29 @@
     box-sizing: border-box;
 }
   
-  /* CARD */
+
 .card {
-      border: 1px solid cornflowerblue;
+      border: 1px solid purple;
       margin: 10px;
 }
   
 .card-header {
       color: white;
-      background-color: cornflowerblue;
+      background-color: purple;
 }
   
-  /* FORM */
+
 .form-input {
     padding: 3px 0;
     margin: 5px 0;
     font-size: 1.2rem;
 }
   
+
+
   /* 5 DAY FORCAST */
 .forcast {
-    background-color: cornflowerblue;
+    background-color: purple;
     border-radius: 5px;
     color: white;
     margin: 5px 5px;
@@ -34,7 +36,7 @@
     margin-bottom: 0;
 }
   
-  /* SEARCH HISTORY BUTTONS */
+
 #search-history, button {
     width: 90%;
     margin: auto;
