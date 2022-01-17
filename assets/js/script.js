@@ -155,3 +155,4 @@ var display5DayForcast = function (city) {
         document.querySelector("#day" + i + ">.humidity").innerHTML = "Humidity: " + city.daily[i].humidity + " %"
     }
 }
+
